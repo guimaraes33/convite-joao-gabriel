@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Convite 1 Aninho - João Gabriel</title>
+  
+  <!-- Fontes Idênticas à Referência -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Dancing+Script:wght@700&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome (Ícones dos botões) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-white: #ffffff;
+      --stripe-blue: #dcf2fd;
+      --dot-yellow: #fdf5a2;
+      --mint-green: #b4ead7;
+      --blue-outline: #77cceb;
+      --ribbon-blue: #a3def5;
+      --text-yellow: #dbe468;
+      --dark-teal: #008e89;
+      --btn-green: #a4ecd1;
+      --grass-green: #d1f4d9;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: #e0f2fe;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      font-family: 'Fredoka', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .invite-container {
+      width: 100%;
+      max-width: 420px;
+      min-height: 100vh;
+      background-color: var(--bg-white);
+      position: relative;
+      overflow-x: hidden;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .top-awning {
+      height: 45px;
+      background: repeating-linear-gradient(
+        to right,
+        var(--stripe-blue),
+        var(--stripe-blue) 35px,
+        #ffffff 35px,
+        #ffffff 70px
+      );
+      width: 100%;
+      position: relative;
+      z-index: 10;
+    }
+
+    .awning-border {
+      height: 12px;
+      background: radial-gradient(circle at 10px 5px, var(--dot-yellow) 4px, transparent 4px);
+      background-size: 20px 12px;
+      position: relative;
+      z-index: 9;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.03);
+    }
+
+    .font-chewy { font-family: 'Chewy', cursive; }
+    .font-dancing { font-family: 'Dancing Script', cursive; }
+
+    .main-title-container {
+      text-align: center;
+      margin-top: 15px;
+      position: relative;
+      z-index: 20;
+    }
+
+    .pre-title {
+      color: #87cfea;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: -10px;
+    }
+
+    /* Personagens do Topo (Círculo Azul) */
+    .top-characters-circle {
+      width: 180px;
+      height: 180px;
+      background-color: #8ce1f6;
+      border-radius: 50%;
+      margin: 10px auto -30px auto;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      padding-bottom: 20px;
+    }
+
+    /* Classe para as novas imagens reais */
+    .sticker-img {
+      max-height: 130px; /* Ajuste este valor dependendo do tamanho da sua imagem */
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 2px rgba(0,0,0,0.15));
+      margin: 0 -5px;
+      position: relative;
+    }
+    
+    .sticker-img.center { 
+      max-height: 150px; /* Personagem central maior */
+      z-index: 2; 
+      margin-bottom: 10px; 
+    }
+    
+    .name-title {
+      font-size: 3.8rem;
+      color: var(--mint-green);
+      -webkit-text-stroke: 3px var(--blue-outline);
+      paint-order: stroke fill;
+      text-shadow: 0 4px 0px rgba(119, 204, 235, 0.4);
+      line-height: 1;
+      transform: rotate(-2deg);
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    .ribbon-container {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 15px;
+      transform: rotate(-1deg);
+    }
+
+    .ribbon {
+      background-color: var(--ribbon-blue);
+      color: white;
+      padding: 6px 25px;
+      font-size: 1.4rem;
+      font-family: 'Chewy', cursive;
+      border-radius: 4px;
+      position: relative;
+      z-index: 2;
+      box-shadow: 0 3px 0 rgba(0,0,0,0.05);
+      letter-spacing: 1px;
+    }
+
+    .ribbon-tail {
+      position: absolute;
+      top: 5px;
+      width: 40px;
+      height: 35px;
+      background-color: #7abeda;
+      z-index: 1;
+    }
+    .ribbon-tail.left {
+      left: -20px;
+      clip-path: polygon(100% 0, 100% 100%, 0 50%);
+    }
+    .ribbon-tail.right {
+      right: -20px;
+      clip-path: polygon(0 0, 0 100%, 100% 50%);
+    }
+
+    .invite-message {
+      text-align: center;
+      color: var(--text-yellow);
+      font-weight: 700;
+      font-size: 0.9rem;
+      line-height: 1.2;
+      padding: 0 25px;
+      margin-top: 15px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      text-shadow: 1px 1px 0px rgba(0,0,0,0.05);
+    }
+
+    .datetime-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 25px 0;
+      position: relative;
+      padding: 0 40px;
+    }
+
+    .date-box, .time-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 5;
+    }
+
+    .dt-number {
+      font-family: 'Chewy', cursive;
+      font-size: 4.5rem;
+      color: var(--mint-green);
+      -webkit-text-stroke: 2px var(--dark-teal);
+      paint-order: stroke fill;
+      line-height: 0.8;
+      margin-bottom: 5px;
+    }
+
+    .dt-text {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.8rem;
+      color: var(--dark-teal);
+      line-height: 1;
+    }
+
+    /* Mamadeira no centro */
+    .bottle-divider {
+      margin: 0 20px;
+      width: 35px;
+    }
+
+    /* Personagens laterais do meio */
+    .side-character-img {
+      position: absolute;
+      max-width: 80px; /* Ajuste o tamanho da imagem lateral aqui */
+      height: auto;
+      filter: drop-shadow(0 4px 4px rgba(0,0,0,0.1));
+    }
+    .side-character-img.left { left: -15px; top: 10px; transform: rotate(15deg); }
+    .side-character-img.right { right: -15px; top: -10px; transform: rotate(-15deg); }
+
+    .buttons-section {
+      display: flex;
+      justify-content: space-evenly;
+      padding: 0 15px;
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 20;
+    }
+
+    .action-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      width: 30%;
+      transition: transform 0.2s;
+    }
+
+    .action-btn:active { transform: scale(0.95); }
+
+    .btn-circle {
+      width: 65px;
+      height: 65px;
+      background-color: var(--btn-green);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 1.8rem;
+      box-shadow: inset 0 -4px 0 rgba(0,0,0,0.1), 0 4px 8px rgba(0,0,0,0.1);
+      margin-bottom: 8px;
+    }
+
+    .btn-text {
+      color: var(--btn-green);
+      font-weight: 700;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      text-align: center;
+      line-height: 1.1;
+    }
+
+    .bottom-scenery {
+      margin-top: auto;
+      position: relative;
+      height: 170px;
+    }
+
+    .grass-base {
+      position: absolute;
+      bottom: 25px; /* Espaço para a barra de rodapé */
+      left: 0;
+      width: 100%;
+      height: 120px;
+      background-color: var(--grass-green);
+      border-top-left-radius: 50% 30px;
+      border-top-right-radius: 50% 30px;
+      z-index: 1;
+    }
+
+    .bottom-characters {
+      position: absolute;
+      bottom: 40px;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: flex-end;
+      z-index: 5;
+      padding: 0 10px;
+    }
+
+    /* Tamanho das imagens no gramado */
+    .bottom-characters .sticker-img { max-height: 70px; }
+    .bottom-characters .sticker-img.big { max-height: 100px; }
+
+    .footer-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: var(--ribbon-blue);
+      color: white;
+      text-align: center;
+      padding: 8px 0;
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 0.5px;
+      z-index: 10;
+    }
+
+    .bg-decorations {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .balloon {
+      position: absolute;
+      width: 50px;
+      height: 65px;
+      background-color: #a3def5;
+      border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+      opacity: 0.8;
+    }
+    .balloon::after {
+      content: '';
+      position: absolute;
+      bottom: -8px; left: 50%; transform: translateX(-50%);
+      border: 5px solid transparent;
+      border-bottom-color: inherit;
+    }
+    
+    .balloon-string {
+      position: absolute;
+      bottom: -35px; left: 50%;
+      width: 1px; height: 30px;
+      background-color: rgba(0,0,0,0.1);
+    }
+
+    /* Modal de Presentes */
+    .modal-overlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      display: flex; justify-content: center; align-items: center;
+      z-index: 100;
+      opacity: 0; pointer-events: none; transition: opacity 0.3s;
+    }
+    .modal-overlay.active { opacity: 1; pointer-events: auto; }
+    
+    .modal-content {
+      background: white; width: 85%; max-width: 320px;
+      border-radius: 20px; padding: 25px; text-align: center;
+      transform: translateY(20px); transition: transform 0.3s;
+      border: 4px solid var(--btn-green);
+    }
+    .modal-overlay.active .modal-content { transform: translateY(0); }
+
+  </style>
+</head>
+<body>
+
+  <div class="invite-container">
+    
+    <!-- Elementos de Fundo -->
+    <div class="bg-decorations">
+      <!-- Balão Azul Esq -->
+      <div class="balloon" style="top: 80px; left: -15px; background-color: #a3def5;">
+        <div class="balloon-string"></div>
+      </div>
+      <!-- Balão Verde Esq -->
+      <div class="balloon" style="top: 190px; left: 20px; background-color: var(--mint-green); transform: scale(0.8);">
+        <div class="balloon-string"></div>
+      </div>
+      <!-- Balão Azul Dir -->
+      <div class="balloon" style="top: 90px; right: -15px; background-color: #a3def5;">
+        <div class="balloon-string"></div>
+      </div>
+      <!-- Balão Verde Dir -->
+      <div class="balloon" style="top: 200px; right: 20px; background-color: var(--mint-green); transform: scale(0.8);">
+        <div class="balloon-string"></div>
+      </div>
+      
+      <!-- Estrelinhas -->
+      <i class="fa-solid fa-star" style="position: absolute; color: var(--dot-yellow); top: 120px; left: 80px; font-size: 12px;"></i>
+      <i class="fa-solid fa-star" style="position: absolute; color: var(--dot-yellow); top: 100px; right: 90px; font-size: 16px;"></i>
+      <i class="fa-solid fa-star" style="position: absolute; color: var(--dot-yellow); top: 260px; left: 30px; font-size: 14px;"></i>
+      <i class="fa-solid fa-star" style="position: absolute; color: var(--dot-yellow); top: 380px; right: 40px; font-size: 18px;"></i>
+      <i class="fa-solid fa-star" style="position: absolute; color: var(--dot-yellow); bottom: 220px; left: 50px; font-size: 15px;"></i>
+    </div>
+
+    <!-- Toldo e Borda -->
+    <div class="top-awning"></div>
+    <div class="awning-border"></div>
+
+    <!-- Título e Topo -->
+    <div class="main-title-container">
+      <div class="pre-title">CONVITE ESPECIAL</div>
+      
+      <!-- Personagens Topo (Substitua os caminhos 'src' pelos nomes das suas imagens) -->
+      <div class="top-characters-circle">
+        <img src="imagens/piupiu.png" class="sticker-img" alt="Piu-piu">
+        <img src="imagens/coelho.png" class="sticker-img center" alt="Pernalonga">
+        <img src="imagens/pato.png" class="sticker-img" alt="Taz">
+      </div>
+
+      <h1 class="name-title font-chewy">JOÃO GABRIEL</h1>
+      <br>
+      
+      <!-- Faixa -->
+      <div class="ribbon-container">
+        <div class="ribbon-tail left"></div>
+        <div class="ribbon-tail right"></div>
+        <div class="ribbon">FAZ 1 ANINHO</div>
+      </div>
+    </div>
+
+    <!-- Mensagem -->
+    <p class="invite-message">
+      Se junte com a turminha do Baby Looney Tunes para comemorar o meu 1º aniversário!
+    </p>
+
+    <!-- Data e Hora -->
+    <div class="datetime-section">
+      <!-- Personagem Lateral Esq -->
+      <img src="imagens/gato.png" class="side-character-img left" alt="gato">
+
+      <div class="date-box">
+        <span class="dt-number">25</span>
+        <span class="dt-text">outubro</span>
+      </div>
+
+      <!-- Ícone Mamadeira SVG -->
+      <div class="bottle-divider">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C10.3431 2 9 3.34315 9 5V6H8C6.89543 6 6 6.89543 6 8V18C6 20.2091 7.79086 22 10 22H14C16.2091 22 18 20.2091 18 18V8C18 6.89543 17.1046 6 16 6H15V5C15 3.34315 13.6569 2 12 2Z" fill="#e2e8f0"/>
+          <path d="M9 6H15V8H9V6Z" fill="#a3def5"/>
+          <path d="M11 2H13V5H11V2Z" fill="#fdf5a2"/>
+          <path d="M12 2C11.4477 2 11 2.44772 11 3C11 3.55228 11.4477 4 12 4C12.5523 4 13 3.55228 13 3C13 2.44772 12.5523 2 12 2Z" fill="#f5d061"/>
+        </svg>
+      </div>
+
+      <div class="time-box">
+        <span class="dt-number">14</span>
+        <span class="dt-text">horas</span>
+      </div>
+
+      <!-- Personagem Lateral Dir -->
+      <img src="imagens/piupiu.png" class="side-character-img right" alt="piupiu">
+    </div>
+
+    <!-- Botões Interativos -->
+    <div class="buttons-section">
+      <!-- Botão Maps -->
+      <a href="https://maps.app.goo.gl/XjQG2duXbMNqTfPX9" target="_blank" class="action-btn">
+        <div class="btn-circle"><i class="fa-solid fa-location-dot"></i></div>
+        <span class="btn-text">Ver Local<br>da Festa</span>
+      </a>
+
+      
+      </button>
+
+      <!-- Botão WhatsApp -->
+      <a href="https://wa.me/5516992871342?text=Ol%C3%A1!%20Quero%20confirmar%20minha%20presen%C3%A7a%20no%20anivers%C3%A1rio%20do%20Jo%C3%A3o." target="_blank" class="action-btn">
+        <div class="btn-circle"><i class="fa-solid fa-check"></i></div>
+        <span class="btn-text">Confirmar<br>Presença</span>
+      </a>
+    </div>
+
+    <!-- Rodapé e Cenário -->
+    <div class="bottom-scenery">
+      <div class="grass-base">
+        <!-- Florzinhas no gramado -->
+        <i class="fa-solid fa-flower" style="position: absolute; color: white; top: 20px; left: 40px; font-size: 8px; opacity: 0.8;"></i>
+        <i class="fa-solid fa-flower" style="position: absolute; color: white; top: 40px; right: 60px; font-size: 10px; opacity: 0.8;"></i>
+      </div>
+      
+      <!-- Turminha no gramado -->
+      <div class="bottom-characters">
+        <img src="imagens/piupiu.png" class="sticker-img" alt="Personagem 1">
+        <img src="imagens/gato.png" class="sticker-img" alt="Personagem 2">
+        <img src="imagens/coelho.png" class="sticker-img big" alt="Personagem 3">
+        <img src="imagens/pato.png" class="sticker-img" alt="Personagem 4">
+        <img src="imagens/piupiu.png" class="sticker-img" alt="Personagem 5">
+        <img src="imagens/gato.png" class="sticker-img" alt="Personagem 6">
+      </div>
+
+      <div class="footer-bar">
+        CLIQUE NOS BOTÕES PARA INTERAGIR.
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Modal de Sugestão de Presentes -->
+  <div class="modal-overlay" id="giftModal" onclick="closeModal(event)">
+    <div class="modal-content">
+      <i class="fa-solid fa-gift" style="font-size: 3rem; color: var(--btn-green); margin-bottom: 15px;"></i>
+      <h2 style="color: var(--dark-teal); font-family: 'Chewy', cursive; font-size: 1.8rem; margin-bottom: 10px;">Lista de Presentes</h2>
+      <p style="color: #666; font-size: 1rem; margin-bottom: 20px; line-height: 1.4;">
+        Sua presença é o nosso maior presente! ❤️<br><br>
+        Mas se desejar presentear o João Gabriel, ele veste tamanho <strong>[Inserir Tamanho]</strong> e calça <strong>[Inserir Número]</strong>.
+      </p>
+      <button onclick="closeModal(event)" style="background: var(--btn-green); color: white; border: none; padding: 10px 25px; border-radius: 20px; font-family: 'Fredoka'; font-weight: bold; font-size: 1.1rem; cursor: pointer;">
+        Fechar
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function openModal() {
+      document.getElementById('giftModal').classList.add('active');
+    }
+
+    function closeModal(event) {
+      // Fecha se clicar no botão ou fora da caixa (no overlay)
+      if(event.target.id === 'giftModal' || event.target.tagName === 'BUTTON') {
+        document.getElementById('giftModal').classList.remove('active');
+      }
+    }
+  </script>
+
+</body>
+</html>
